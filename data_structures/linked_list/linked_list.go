@@ -104,7 +104,10 @@ func (list *LinkedList) Delete(index int) interface{} {
 		value := list.head.Value
 
 		list.head = list.head.next
-		list.head.prev = nil
+		if list.head != nil {
+			list.head.prev = nil
+		}
+
 		list.len--
 
 		return value
