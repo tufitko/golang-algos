@@ -20,4 +20,7 @@ func TestSimple(t *testing.T) {
 	list.ForEach(func(value interface{}) {
 		fmt.Println("- ", value)
 	})
+
+	list.Reverse()
+	log.Println(list)
 }

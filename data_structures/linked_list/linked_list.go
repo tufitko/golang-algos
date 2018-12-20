@@ -7,14 +7,12 @@ import (
 
 type Element struct {
 	next, prev *Element
-
-	Value interface{}
+	Value      interface{}
 }
 
 type LinkedList struct {
 	head, tail *Element
-
-	len int
+	len        int
 }
 
 func NewLinkedList() *LinkedList {
@@ -162,6 +160,18 @@ func (list *LinkedList) ForEach(fn func(value interface{})) {
 
 	for temp != nil {
 		fn(temp.Value)
+
+		temp = temp.next
+	}
+}
+
+func (list *LinkedList) Reverse() {
+	list.head, list.tail = list.tail, list.head
+
+	temp := list.head
+
+	for temp != nil {
+		temp.prev, temp.next = temp.next, temp.prev
 
 		temp = temp.next
 	}
